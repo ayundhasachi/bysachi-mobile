@@ -1,25 +1,46 @@
-1. Stateless vs. Stateful Widget:
-   - Stateless Widget: Digunakan ketika tampilan widget tidak perlu diperbarui berdasarkan perubahan internal. Stateless widget tidak memiliki keadaan (state) internal. Misalnya, untuk widget yang hanya menampilkan teks atau ikon.
-   - Stateful Widget: Digunakan ketika tampilan widget perlu diperbarui berdasarkan perubahan internal. Stateful widget memiliki keadaan internal yang bisa diperbarui, dan ketika keadaan berubah, widget akan membangun kembali tampilannya. Misalnya, untuk widget yang menampilkan data yang dapat berubah, seperti daftar item yang dapat diperbarui.
+1. **Navigator.push() vs Navigator.pushReplacement():**
+   - **Navigator.push():** Digunakan untuk menambahkan rute baru ke tumpukan navigasi. Ini menambahkan rute baru di atas rute saat ini, sehingga pengguna dapat kembali ke rute sebelumnya.
+   ```dart
+   Navigator.push(
+     context,
+     MaterialPageRoute(builder: (context) => SecondScreen()),
+   );
+   ```
+   - **Navigator.pushReplacement():** Digunakan untuk menggantikan rute saat ini dengan rute baru. Ini berguna jika Anda ingin menghapus rute saat ini dari tumpukan navigasi.
+   ```dart
+   Navigator.pushReplacement(
+     context,
+     MaterialPageRoute(builder: (context) => NewScreen()),
+   );
+   ```
 
-2. Widget yang digunakan dalam kode tersebut adalah:
-   - `MyHomePage`: Merupakan stateless widget yang mewakili halaman utama aplikasi. Ini berisi app bar, judul, dan grid view.
-   - `Scaffold`: Merupakan widget yang mendefinisikan kerangka dasar aplikasi dengan app bar dan body.
-   - `AppBar`: Widget yang mendefinisikan app bar dengan judul dan latar belakang warna.
-   - `SingleChildScrollView`: Widget ini digunakan untuk memungkinkan pengguna menggulir kontennya jika kontennya terlalu panjang untuk layar.
-   - `Column`: Widget ini mengatur elemen-elemen anak secara vertikal.
-   - `GridView`: Widget ini menampilkan daftar item dalam bentuk grid.
-   - `ShopCard`: Merupakan stateless widget yang mewakili setiap item di dalam grid.
-   - `ShopItem`: Kelas model yang berisi nama dan ikon item toko.
-   - `items`: Daftar item yang digunakan untuk mengisi grid dalam `GridView`.
+2. **Layout Widget pada Flutter dan Penggunaannya:**
+   - **Container:** Digunakan untuk mengatur tata letak umum, seperti margin, padding, dan warna latar belakang.
+   - **Row dan Column:** Digunakan untuk menata widget secara horizontal (Row) atau vertikal (Column).
+   - **ListView:** Untuk menampilkan daftar elemen, dapat digulir.
+   - **Stack:** Menempatkan widget di atas widget lain, seperti tumpukan kartu.
 
-3. Langkah-langkah implementasi dari kode tersebut adalah sebagai berikut:
-   a. Mengimpor pustaka yang diperlukan.
-   b. Membuat kelas `ShopItem` yang berisi informasi tentang setiap item toko.
-   c. Membuat kelas `ShopCard` yang akan menampilkan setiap item dalam grid, termasuk ikon dan teks.
-   d. Membuat tampilan utama aplikasi dalam kelas `MyHomePage`, termasuk app bar, judul, dan grid view yang menggunakan `GridView`.
-   e. Membuat daftar `items` yang berisi item toko.
-   f. Menggunakan `InkWell` di dalam `ShopCard` untuk menangani ketika pengguna mengklik item.
-   g. Menampilkan snackbar yang memberikan umpan balik kepada pengguna ketika mereka mengklik item.
-   
-   Perhatikan bahwa untuk menjalankan aplikasi ini, Anda perlu memasang Flutter dan mengintegrasikannya ke dalam proyek Anda. Kemudian, Anda dapat membuat widget `MyApp` sebagai entry point aplikasi dan menjalankan `MyHomePage` di dalamnya. Kode di atas adalah bagian dari widget utama di dalam aplikasi Flutter.
+3. **Elemen Input pada Form:**
+   - **TextFormField:** Untuk input teks dengan validasi.
+   - **DropdownButton:** Untuk pilihan dari daftar drop-down.
+   - **DatePicker:** Untuk memilih tanggal.
+   - **Checkbox:** Untuk pilihan yang dapat dicentang.
+   - **RadioButton:** Untuk pilihan tunggal dari beberapa opsi.
+
+4. **Penerapan Clean Architecture pada Aplikasi Flutter:**
+   - **Entity:** Representasi dari objek bisnis.
+   - **Use Case/Interactor:** Logika bisnis.
+   - **Repository:** Antarmuka untuk mengakses data.
+   - **Presenter/BLoC:** Mengurus tampilan dan berkomunikasi dengan use case.
+   - **UI (User Interface):** Menangani tampilan dan presentasi.
+
+5. **Implementasi Checklist Secara Step-by-Step:**
+   - **Step 1:** Rencanakan struktur proyek dengan memisahkan kode ke dalam layer yang berbeda (presentation, domain, data).
+   - **Step 2:** Tentukan entitas (Entity) yang merepresentasikan objek bisnis.
+   - **Step 3:** Implementasikan repository untuk mengakses data.
+   - **Step 4:** Buat use case atau interaktor untuk logika bisnis.
+   - **Step 5:** Buat presenter atau BLoC untuk menghubungkan use case dengan tampilan.
+   - **Step 6:** Bangun antarmuka pengguna dengan memanfaatkan widget Flutter yang sesuai.
+   - **Step 7:** Implementasikan navigasi menggunakan Navigator dan widget navigasi Flutter.
+   - **Step 8:** Uji secara bertahap dan iteratif setiap komponen.
+
