@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:bysachi/screens/menu.dart';
 import 'package:bysachi/screens/shoplist_form.dart';
 
+import 'package:bysachi/screens/itemlistpage.dart';
+import 'package:bysachi/screens/view_item.dart';
+
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -17,7 +21,7 @@ class LeftDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'bysachi',
+                  'Shopping List',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -31,8 +35,8 @@ class LeftDrawer extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.white,
                     fontWeight: FontWeight.normal,
+                    color: Colors.white,
                   ),
                 ),
               ],
@@ -41,37 +45,58 @@ class LeftDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Halaman Utama'),
+            // Bagian redirection ke MyHomePage
             onTap: () {
               Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MyHomePage(),
-                  ));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(),
+                ),
+              );
             },
           ),
           ListTile(
             leading: const Icon(Icons.add_shopping_cart),
             title: const Text('Tambah Item'),
+            // Bagian redirection ke ShopFormPage
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ShopFormPage()));
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.checklist),
-            title: const Text('Lihat Item'),
-            onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ItemListPage(items: itemList)),
+                  builder: (context) => const ShopFormPage(),
+                ),
               );
             },
           ),
+          
+          ListTile(
+            leading: const Icon(Icons.checklist),
+            title: const Text('Lihat Item'),
+            // Bagian redirection ke ItemListPage dengan menggunakan _generateItemList()
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ItemListPage(items: items),
+                ),
+              );
+            },
+          ),
+
+                  ListTile(
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Daftar Item'),
+            onTap: () {
+                // Route menu ke halaman produk
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductPage()),
+                );
+            },
+        ),
         ],
       ),
     );
   }
+  
 }

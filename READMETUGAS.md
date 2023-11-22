@@ -1,46 +1,39 @@
-1. **Navigator.push() vs Navigator.pushReplacement():**
-   - **Navigator.push():** Digunakan untuk menambahkan rute baru ke tumpukan navigasi. Ini menambahkan rute baru di atas rute saat ini, sehingga pengguna dapat kembali ke rute sebelumnya.
-   ```dart
-   Navigator.push(
-     context,
-     MaterialPageRoute(builder: (context) => SecondScreen()),
-   );
-   ```
-   - **Navigator.pushReplacement():** Digunakan untuk menggantikan rute saat ini dengan rute baru. Ini berguna jika Anda ingin menghapus rute saat ini dari tumpukan navigasi.
-   ```dart
-   Navigator.pushReplacement(
-     context,
-     MaterialPageRoute(builder: (context) => NewScreen()),
-   );
-   ```
 
-2. **Layout Widget pada Flutter dan Penggunaannya:**
-   - **Container:** Digunakan untuk mengatur tata letak umum, seperti margin, padding, dan warna latar belakang.
-   - **Row dan Column:** Digunakan untuk menata widget secara horizontal (Row) atau vertikal (Column).
-   - **ListView:** Untuk menampilkan daftar elemen, dapat digulir.
-   - **Stack:** Menempatkan widget di atas widget lain, seperti tumpukan kartu.
+### 1. Pengambilan Data JSON tanpa Membuat Model:
 
-3. **Elemen Input pada Form:**
-   - **TextFormField:** Untuk input teks dengan validasi.
-   - **DropdownButton:** Untuk pilihan dari daftar drop-down.
-   - **DatePicker:** Untuk memilih tanggal.
-   - **Checkbox:** Untuk pilihan yang dapat dicentang.
-   - **RadioButton:** Untuk pilihan tunggal dari beberapa opsi.
+Ya, Anda bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Pengambilan data JSON biasanya melibatkan HTTP request ke server yang memberikan respons dalam format JSON. Anda dapat menggunakan pustaka HTTP di Flutter seperti `http` atau `dio` untuk melakukan request dan mengelola respons JSON.
 
-4. **Penerapan Clean Architecture pada Aplikasi Flutter:**
-   - **Entity:** Representasi dari objek bisnis.
-   - **Use Case/Interactor:** Logika bisnis.
-   - **Repository:** Antarmuka untuk mengakses data.
-   - **Presenter/BLoC:** Mengurus tampilan dan berkomunikasi dengan use case.
-   - **UI (User Interface):** Menangani tampilan dan presentasi.
+### 2. CookieRequest di Flutter:
 
-5. **Implementasi Checklist Secara Step-by-Step:**
-   - **Step 1:** Rencanakan struktur proyek dengan memisahkan kode ke dalam layer yang berbeda (presentation, domain, data).
-   - **Step 2:** Tentukan entitas (Entity) yang merepresentasikan objek bisnis.
-   - **Step 3:** Implementasikan repository untuk mengakses data.
-   - **Step 4:** Buat use case atau interaktor untuk logika bisnis.
-   - **Step 5:** Buat presenter atau BLoC untuk menghubungkan use case dengan tampilan.
-   - **Step 6:** Bangun antarmuka pengguna dengan memanfaatkan widget Flutter yang sesuai.
-   - **Step 7:** Implementasikan navigasi menggunakan Navigator dan widget navigasi Flutter.
-   - **Step 8:** Uji secara bertahap dan iteratif setiap komponen.
+`CookieRequest` tidak termasuk dalam kelas bawaan Flutter. Namun, jika maksud Anda adalah HTTP request yang memanfaatkan cookies, itu dapat diimplementasikan dengan menambahkan header yang sesuai ke dalam permintaan HTTP. Cookies biasanya digunakan untuk otentikasi dan melacak sesi.
 
+### 3. Mekanisme Pengambilan Data dari JSON hingga Ditampilkan di Flutter:
+
+- Lakukan HTTP request ke server dengan menggunakan pustaka HTTP seperti `http` atau `dio`.
+- Terima respons dalam format JSON.
+- Gunakan pustaka JSON di Flutter, seperti `dart:convert`, untuk mengonversi JSON menjadi objek Dart.
+- Tampilkan data tersebut di dalam widget Flutter, misalnya menggunakan widget seperti `ListView` atau `GridView`.
+
+### 4. Mekanisme Autentikasi dari Flutter ke Django:
+
+- Implementasikan formulir login/registrasi di Flutter.
+- Kirim data ke endpoint autentikasi di server Django menggunakan HTTP request.
+- Django memverifikasi kredensial, menghasilkan token akses.
+- Token disimpan dan dikirim bersama setiap permintaan selanjutnya dari Flutter ke Django.
+
+### 5. Widget yang Digunakan dalam Tugas:
+
+- `HttpClient` atau `http` package untuk melakukan HTTP request.
+- `json.decode` atau pustaka `dart:convert` untuk mengonversi JSON.
+- Widget-form seperti `TextField` untuk masukan pengguna.
+- `ListView`, `GridView`, atau widget lain untuk menampilkan data.
+- Mungkin `Provider` untuk mengelola state aplikasi.
+
+### 6. Implementasi Step-by-Step:
+
+- Tentukan endpoint server dan buat fungsi untuk mengirim permintaan HTTP.
+- Kelola state aplikasi menggunakan `Provider` atau state management lain.
+- Implementasikan formulir login/registrasi dengan `TextField`.
+- Kirim data ke server dengan HTTP request.
+- Tangani respons, simpan token (jika autentikasi berhasil).
+- Tampilkan data atau hasil autentikasi menggunakan widget yang sesuai.
